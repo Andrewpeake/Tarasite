@@ -36,20 +36,39 @@ export default function PhotoGrid({ photos }: PhotoGridProps) {
   return (
     <div
       ref={gridRef}
-      className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6"
+      className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4"
     >
       {photos.map((photo) => (
         <div
           key={photo.id}
-          className="photo-item relative aspect-square rounded-xl overflow-hidden border border-neutral-900 group cursor-pointer"
+          className="photo-item relative aspect-square rounded-xl overflow-hidden border border-neutral-800/50 bg-neutral-900/50 group cursor-pointer"
         >
           <Image
             src={photo.thumbnailUrl}
             alt={photo.title || `Photo ${photo.id}`}
             fill
-            className="object-cover transition-transform duration-300 group-hover:scale-105 group-hover:-translate-y-1"
+            className="object-cover transition-all duration-500 group-hover:scale-110"
             sizes="(max-width: 768px) 50vw, 33vw"
           />
+          {/* Film grain overlay */}
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjkiIG51bU9jdGF2ZXM9IjQiLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjYSkiIG9wYWNpdHk9IjAuMDMiLz48L3N2Zz4=')]" />
+          {/* Hover overlay with caption */}
+          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-end">
+            {(photo.title || photo.tags.length > 0) && (
+              <div className="absolute bottom-0 left-0 right-0 p-3 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 bg-gradient-to-t from-black/80 to-transparent">
+                {photo.title && (
+                  <p className="text-xs text-neutral-200 font-light mb-1">
+                    {photo.title}
+                  </p>
+                )}
+                {photo.tags.length > 0 && (
+                  <p className="text-xs text-neutral-400">
+                    {photo.tags.slice(0, 2).join(", ")}
+                  </p>
+                )}
+              </div>
+            )}
+          </div>
         </div>
       ))}
     </div>

@@ -51,7 +51,7 @@ export default function Navbar() {
             className="text-xs text-neutral-400 hover:text-neutral-100 transition-colors"
             onClick={(e) => {
               e.preventDefault();
-              const element = document.querySelector("#about");
+              const element = document.querySelector("#about") as HTMLElement;
               const lenis = getLenis();
               if (element && lenis) {
                 lenis.scrollTo(element, { offset: -80, duration: 1.5 });
@@ -65,7 +65,7 @@ export default function Navbar() {
             className="text-xs text-neutral-400 hover:text-neutral-100 transition-colors"
             onClick={(e) => {
               e.preventDefault();
-              const element = document.querySelector("#photos");
+              const element = document.querySelector("#photos") as HTMLElement;
               const lenis = getLenis();
               if (element && lenis) {
                 lenis.scrollTo(element, { offset: -80, duration: 1.5 });
@@ -79,7 +79,7 @@ export default function Navbar() {
             className="text-xs text-neutral-400 hover:text-neutral-100 transition-colors"
             onClick={(e) => {
               e.preventDefault();
-              const element = document.querySelector("#writing");
+              const element = document.querySelector("#writing") as HTMLElement;
               const lenis = getLenis();
               if (element && lenis) {
                 lenis.scrollTo(element, { offset: -80, duration: 1.5 });
@@ -87,6 +87,20 @@ export default function Navbar() {
             }}
           >
             Writing
+          </a>
+          <a
+            href="#experience"
+            className="text-xs text-neutral-400 hover:text-neutral-100 transition-colors"
+            onClick={(e) => {
+              e.preventDefault();
+              const element = document.querySelector("#experience") as HTMLElement;
+              const lenis = getLenis();
+              if (element && lenis) {
+                lenis.scrollTo(element, { offset: -80, duration: 1.5 });
+              }
+            }}
+          >
+            Experience
           </a>
         </div>
       </div>

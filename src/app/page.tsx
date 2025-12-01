@@ -1,46 +1,48 @@
 import { identityProfile } from "@/data/identity";
 import { photoLibrary } from "@/data/photos";
 import { writings } from "@/data/writings";
-import IdentityHeader from "@/components/identity/IdentityHeader";
+import { experiences } from "@/data/experience";
+import { artifacts } from "@/data/artifacts";
+import LinkedInHero from "@/components/identity/LinkedInHero";
 import AboutStrip from "@/components/identity/AboutStrip";
+import ThreeGallerySection from "@/components/three/ThreeGallerySection";
 import Section from "@/components/layout/Section";
 import PhotoGrid from "@/components/photos/PhotoGrid";
-import WritingList from "@/components/writing/WritingList";
-import PinnedChapter from "@/components/animations/PinnedChapter";
-import ParallaxBlock from "@/components/animations/ParallaxBlock";
+import EditorialGrid from "@/components/writing/EditorialGrid";
+import ExperienceTimeline from "@/components/experience/ExperienceTimeline";
 
 export default function Home() {
   return (
     <>
-      <IdentityHeader profile={identityProfile} />
+      {/* LinkedIn-style Hero */}
+      <LinkedInHero profile={identityProfile} />
 
+      {/* About / Identity Strip */}
       <AboutStrip />
 
-      <PinnedChapter
-        pinDurationFactor={1.5}
-        heading="This space is allowed to be inconsistent"
-        subheading="Scroll slowly"
-      >
-        <ParallaxBlock fromY={0} toY={-50}>
-          <div className="max-w-2xl mx-auto px-6">
-            <div className="rounded-3xl bg-gradient-to-br from-neutral-900 to-neutral-950 p-8 md:p-12 border border-neutral-800">
-              <p className="text-base md:text-lg text-neutral-300 leading-relaxed">
-                This space is allowed to be inconsistent, unfinished, and deeply
-                human. Scroll slowly.
-              </p>
-            </div>
-          </div>
-        </ParallaxBlock>
-      </PinnedChapter>
+      {/* 3D Gallery Wheel Section */}
+      <ThreeGallerySection artifacts={artifacts} />
 
-      <Section id="photos" title="Photos" eyebrow="Visual fragments">
+      {/* Photo Diary Section */}
+      <Section id="photos" title="Photo Diary" eyebrow="Fragments">
         <PhotoGrid photos={photoLibrary.all()} />
       </Section>
 
-      <Section id="writing" title="Writing" eyebrow="Words that stuck around">
-        <WritingList writings={writings} />
+      {/* Writing & Articles Section */}
+      <Section
+        id="writing"
+        title="Writing & Editing"
+        eyebrow="Culture, internet, brain stuff"
+      >
+        <EditorialGrid writings={writings} />
+      </Section>
+
+      {/* Experience / Timeline Section */}
+      <Section id="experience" title="Experience" eyebrow="Work & Roles">
+        <ExperienceTimeline experiences={experiences} />
       </Section>
     </>
   );
 }
+
 

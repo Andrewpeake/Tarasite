@@ -2,9 +2,14 @@ import { IdentityProfile } from "@/domain/identity";
 
 export const identityProfile: IdentityProfile = {
   name: "Tara Yang",
-  tagline: "Building slowly, thinking deeply",
+  tagline: "Senior Culture Editor · Writer",
   bio: "A collection of moments, thoughts, and visual fragments. This is a living archive, not a feed. Western University.",
   location: "Calgary, AB and London, Ontario",
+  roles: [
+    "Senior Culture Editor",
+    "Business Dev Intern",
+    "Research Assistant",
+  ],
   links: {
     instagram: "https://www.instagram.com/tairruh/",
     substack: "https://substack.com/@tairruh",
