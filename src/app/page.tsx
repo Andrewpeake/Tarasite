@@ -7,7 +7,7 @@ import LinkedInHero from "@/components/identity/LinkedInHero";
 import AboutStrip from "@/components/identity/AboutStrip";
 import ThreeGallerySection from "@/components/three/ThreeGallerySection";
 import Section from "@/components/layout/Section";
-import PhotoGrid from "@/components/photos/PhotoGrid";
+import PhotoDiarySection from "@/components/photos/PhotoDiarySection";
 import EditorialGrid from "@/components/writing/EditorialGrid";
 import ExperienceTimeline from "@/components/experience/ExperienceTimeline";
 
@@ -24,9 +24,7 @@ export default function Home() {
       <ThreeGallerySection artifacts={artifacts} />
 
       {/* Photo Diary Section */}
-      <Section id="photos" title="Photo Diary" eyebrow="Fragments">
-        <PhotoGrid photos={photoLibrary.all()} />
-      </Section>
+      <PhotoDiarySection photos={photoLibrary.all()} />
 
       {/* Writing & Articles Section */}
       <Section

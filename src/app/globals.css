@@ -49,5 +49,14 @@ a {
     background-color: var(--bg-elevated);
     border-color: var(--border-subtle);
   }
+
+  .scrollbar-none {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
 }
 
