@@ -59,20 +59,39 @@ export default function WritingList({ writings }: WritingListProps) {
       {writings.map((writing) => (
         <article
           key={writing.slug}
-          className="writing-card p-6 rounded-xl border border-neutral-900 bg-neutral-950/50 hover:bg-neutral-950/80 hover:border-neutral-800 transition-colors"
+          className="writing-card p-6 rounded-xl border shadow-sm hover:shadow-md transition-all duration-300"
+          style={{
+            backgroundColor: "var(--bg-elevated)",
+            borderColor: "var(--border-subtle)"
+          }}
         >
           <div className="flex items-center justify-between mb-3">
-            <span className="text-xs text-neutral-500 uppercase tracking-wider">
+            <span 
+              className="text-xs uppercase tracking-wider px-2 py-1 rounded-full inline-block"
+              style={{
+                color: "var(--accent)",
+                backgroundColor: "var(--accent-soft)"
+              }}
+            >
               {getTypeLabel(writing.type)}
             </span>
-            <time className="text-xs text-neutral-500">
+            <time 
+              className="text-xs"
+              style={{ color: "var(--text-muted)" }}
+            >
               {formatDate(writing.publishedAt)}
             </time>
           </div>
-          <h3 className="text-xl font-medium text-neutral-100 mb-2">
+          <h3 
+            className="text-xl font-medium mb-2"
+            style={{ color: "var(--text-main)" }}
+          >
             {writing.title}
           </h3>
-          <p className="text-sm text-neutral-400 leading-relaxed">
+          <p 
+            className="text-sm leading-relaxed"
+            style={{ color: "var(--text-muted)" }}
+          >
             {writing.summary}
           </p>
         </article>

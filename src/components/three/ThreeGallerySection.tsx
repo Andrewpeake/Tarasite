@@ -100,10 +100,11 @@ export default function ThreeGallerySection({
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen w-full bg-black overflow-hidden"
+      className="relative min-h-screen w-full overflow-hidden"
+      style={{ backgroundColor: "var(--bg)" }}
     >
-      {/* 3D Canvas */}
-      <div className="absolute inset-0 w-full h-full">
+      {/* 3D Canvas with light gradient background */}
+      <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-rose-50 via-slate-50 to-sky-50">
         <ThreeGalleryCanvas
           artifacts={artifacts}
           scrollFactor={scrollFactor}
@@ -115,11 +116,20 @@ export default function ThreeGallerySection({
       {/* DOM Overlay Label */}
       {hoveredArtifact && (
         <div className="absolute top-20 left-1/2 transform -translate-x-1/2 z-10 pointer-events-none">
-          <div className="px-6 py-2 rounded-full bg-black/80 backdrop-blur-md border border-neutral-800 shadow-lg">
-            <span className="text-sm font-medium text-neutral-100 uppercase tracking-wider">
+          <div 
+            className="px-6 py-2 rounded-full backdrop-blur-md border shadow-lg"
+            style={{
+              backgroundColor: "rgba(254, 247, 242, 0.9)",
+              borderColor: "var(--border-subtle)"
+            }}
+          >
+            <span 
+              className="text-sm font-medium uppercase tracking-wider"
+              style={{ color: "var(--text-main)" }}
+            >
               {hoveredArtifact.label ?? hoveredArtifact.title}
               {hoveredArtifact.count !== undefined && (
-                <span className="text-neutral-400"> ({hoveredArtifact.count})</span>
+                <span style={{ color: "var(--text-muted)" }}> ({hoveredArtifact.count})</span>
               )}
             </span>
           </div>

@@ -57,7 +57,7 @@ export default function LinkedInHero({
   }, []);
 
   return (
-    <section className="relative w-full bg-neutral-950">
+    <section className="relative w-full" style={{ backgroundColor: "var(--bg)" }}>
       {/* Banner with parallax */}
       <ParallaxBlock fromY={0} toY={-30} className="absolute inset-0">
         <div className="relative w-full h-[400px] md:h-[500px] overflow-hidden rounded-b-3xl">
@@ -65,12 +65,12 @@ export default function LinkedInHero({
             src={bannerImage}
             alt="Banner"
             fill
-            className="object-cover opacity-60"
+            className="object-cover opacity-40"
             priority
             sizes="100vw"
           />
-          {/* Overlay for readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
+          {/* Overlay for readability - soft light gradient */}
+          <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-white/10 to-white/50" />
         </div>
       </ParallaxBlock>
 
@@ -79,7 +79,13 @@ export default function LinkedInHero({
         <div className="flex flex-col md:flex-row md:items-end gap-6">
           {/* Avatar */}
           <div className="relative flex-shrink-0">
-            <div className="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-neutral-900 overflow-hidden bg-neutral-800">
+            <div 
+              className="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 overflow-hidden shadow-lg"
+              style={{ 
+                borderColor: "var(--border-subtle)",
+                backgroundColor: "var(--bg-elevated)"
+              }}
+            >
               <Image
                 src={avatarImage}
                 alt={profile.name}
@@ -95,13 +101,15 @@ export default function LinkedInHero({
           <div className="flex-1 pb-4">
             <h1
               ref={nameRef}
-              className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-neutral-100 mb-2"
+              className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium mb-2"
+              style={{ color: "var(--text-main)" }}
             >
               {profile.name}
             </h1>
             <p
               ref={taglineRef}
-              className="text-base md:text-lg text-neutral-300 mb-4 font-light"
+              className="text-base md:text-lg mb-4 font-light"
+              style={{ color: "var(--text-muted)" }}
             >
               {profile.tagline}
             </p>
@@ -112,7 +120,12 @@ export default function LinkedInHero({
                 {profile.roles.map((role, index) => (
                   <span
                     key={index}
-                    className="role-chip px-3 py-1 rounded-full bg-neutral-900/80 backdrop-blur-sm border border-neutral-800 text-xs text-neutral-300"
+                    className="role-chip px-3 py-1 rounded-full text-xs shadow-sm"
+                    style={{
+                      backgroundColor: "var(--accent-soft)",
+                      color: "var(--accent)",
+                      border: `1px solid var(--border-subtle)`
+                    }}
                   >
                     {role}
                   </span>

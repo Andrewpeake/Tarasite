@@ -20,12 +20,13 @@ export default function Section({
       <div className="max-w-5xl mx-auto px-6">
         <div className="mb-12">
           {eyebrow && (
-            <p className="text-xs text-neutral-500 uppercase tracking-wider mb-2">
+            <p className="text-xs uppercase tracking-wider mb-2" style={{ color: "var(--text-muted)" }}>
               {eyebrow}
             </p>
           )}
-          <h2 className="text-2xl md:text-3xl font-medium text-neutral-100">
+          <h2 className="text-2xl md:text-3xl font-medium relative inline-block" style={{ color: "var(--text-main)" }}>
             {title}
+            <span className="absolute -bottom-2 left-0 w-12 h-0.5 rounded-full" style={{ backgroundColor: "var(--accent)" }} />
           </h2>
         </div>
         {children}

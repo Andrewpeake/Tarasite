@@ -10,9 +10,9 @@ export default function Shell({ children }: ShellProps) {
     <>
       <Navbar />
       <main className="pt-16">{children}</main>
-      <footer className="py-12 border-t border-neutral-900">
+      <footer className="py-12 border-t" style={{ borderColor: "var(--border-subtle)" }}>
         <div className="max-w-5xl mx-auto px-6">
-          <p className="text-xs text-neutral-500 text-center">
+          <p className="text-xs text-center" style={{ color: "var(--text-muted)" }}>
             Identity Archive © {new Date().getFullYear()}
           </p>
         </div>

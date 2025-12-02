@@ -41,7 +41,11 @@ export default function PhotoGrid({ photos }: PhotoGridProps) {
       {photos.map((photo) => (
         <div
           key={photo.id}
-          className="photo-item relative aspect-square rounded-xl overflow-hidden border border-neutral-800/50 bg-neutral-900/50 group cursor-pointer"
+          className="photo-item relative aspect-square rounded-xl overflow-hidden border shadow-sm group cursor-pointer"
+          style={{
+            borderColor: "var(--border-subtle)",
+            backgroundColor: "var(--bg-elevated)"
+          }}
         >
           <Image
             src={photo.thumbnailUrl}
@@ -53,16 +57,16 @@ export default function PhotoGrid({ photos }: PhotoGridProps) {
           {/* Film grain overlay */}
           <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjkiIG51bU9jdGF2ZXM9IjQiLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjYSkiIG9wYWNpdHk9IjAuMDMiLz48L3N2Zz4=')]" />
           {/* Hover overlay with caption */}
-          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-end">
+          <div className="absolute inset-0 bg-white/0 group-hover:bg-white/20 transition-all duration-300 flex items-end">
             {(photo.title || photo.tags.length > 0) && (
-              <div className="absolute bottom-0 left-0 right-0 p-3 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 bg-gradient-to-t from-black/80 to-transparent">
+              <div className="absolute bottom-0 left-0 right-0 p-3 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 bg-gradient-to-t from-white/90 to-transparent">
                 {photo.title && (
-                  <p className="text-xs text-neutral-200 font-light mb-1">
+                  <p className="text-xs font-light mb-1" style={{ color: "var(--text-main)" }}>
                     {photo.title}
                   </p>
                 )}
                 {photo.tags.length > 0 && (
-                  <p className="text-xs text-neutral-400">
+                  <p className="text-xs" style={{ color: "var(--text-muted)" }}>
                     {photo.tags.slice(0, 2).join(", ")}
                   </p>
                 )}

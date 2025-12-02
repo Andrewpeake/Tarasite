@@ -96,7 +96,7 @@ export default function GalleryCard({
   useFrame(() => {
     if (!meshRef.current) return;
 
-    const targetScale = hovered || isActive ? 1.1 : 1.0;
+    const targetScale = hovered || isActive ? 1.05 : 1.0; // Tamed hover scale
     const currentScale = meshRef.current.scale.x;
 
     // Smoothly interpolate scale
@@ -110,7 +110,7 @@ export default function GalleryCard({
 
     // Increase brightness on hover
     if (meshRef.current.material instanceof MeshStandardMaterial) {
-      const targetEmissive = hovered || isActive ? 0.2 : 0;
+      const targetEmissive = hovered || isActive ? 0.15 : 0; // Subtle brightness increase
       meshRef.current.material.emissiveIntensity = THREE.MathUtils.lerp(
         meshRef.current.material.emissiveIntensity,
         targetEmissive,

@@ -67,11 +67,21 @@ export default function EditorialGrid({ writings }: EditorialGridProps) {
         >
           <a
             href={writing.url || `#${writing.slug}`}
-            className="block bg-neutral-50 dark:bg-neutral-900 rounded-2xl overflow-hidden border border-neutral-200 dark:border-neutral-800 hover:shadow-xl transition-shadow duration-300"
+            className="block rounded-2xl overflow-hidden border hover:shadow-md transition-shadow duration-300"
+            style={{
+              backgroundColor: "var(--bg-elevated)",
+              borderColor: "var(--border-subtle)"
+            }}
           >
             {/* Category label */}
             <div className="px-6 pt-6 pb-2">
-              <span className="text-xs font-semibold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
+              <span 
+                className="text-xs font-semibold uppercase tracking-wider px-2 py-1 rounded-full inline-block"
+                style={{
+                  color: "var(--accent)",
+                  backgroundColor: "var(--accent-soft)"
+                }}
+              >
                 {writing.category || getCategoryLabel(writing.type)}
               </span>
             </div>
@@ -91,13 +101,22 @@ export default function EditorialGrid({ writings }: EditorialGridProps) {
 
             {/* Content */}
             <div className="p-6 md:p-8">
-              <h3 className="text-2xl md:text-3xl font-serif font-semibold text-neutral-900 dark:text-neutral-100 mb-3 group-hover:text-neutral-700 dark:group-hover:text-neutral-300 transition-colors">
+              <h3 
+                className="text-2xl md:text-3xl font-serif font-semibold mb-3 transition-colors group-hover:opacity-80"
+                style={{ color: "var(--text-main)" }}
+              >
                 {writing.title}
               </h3>
-              <p className="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed mb-4">
+              <p 
+                className="text-base leading-relaxed mb-4"
+                style={{ color: "var(--text-muted)" }}
+              >
                 {writing.summary}
               </p>
-              <div className="flex items-center gap-4 text-xs text-neutral-500 dark:text-neutral-500">
+              <div 
+                className="flex items-center gap-4 text-xs"
+                style={{ color: "var(--text-muted)" }}
+              >
                 <time>{formatDate(writing.publishedAt)}</time>
                 {writing.readTime && (
                   <>

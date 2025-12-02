@@ -9,6 +9,7 @@ interface SplitTextRevealProps {
   stagger?: number;
   duration?: number;
   className?: string;
+  style?: React.CSSProperties;
 }
 
 export default function SplitTextReveal({
@@ -17,6 +18,7 @@ export default function SplitTextReveal({
   stagger = 0.02,
   duration = 0.6,
   className = "",
+  style,
 }: SplitTextRevealProps) {
   const containerRef = useRef<HTMLElement | null>(null);
 
@@ -64,6 +66,7 @@ export default function SplitTextReveal({
     <Component
       ref={containerRef as any}
       className={className}
+      style={style}
     >
       {words.map((word, index) => (
         <span key={index} className="word inline-block mr-1">

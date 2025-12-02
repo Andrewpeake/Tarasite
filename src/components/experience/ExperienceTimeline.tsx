@@ -37,25 +37,46 @@ export default function ExperienceTimeline({
   return (
     <div ref={timelineRef} className="relative">
       {/* Timeline line */}
-      <div className="absolute left-6 md:left-8 top-0 bottom-0 w-0.5 bg-neutral-800" />
+      <div 
+        className="absolute left-6 md:left-8 top-0 bottom-0 w-0.5"
+        style={{ backgroundColor: "var(--border-subtle)" }}
+      />
 
       {/* Timeline items */}
       <div className="space-y-12">
         {experiences.map((exp, index) => (
           <div key={exp.id} className="timeline-item relative pl-16 md:pl-20">
             {/* Timeline dot */}
-            <div className="absolute left-4 md:left-6 top-2 w-4 h-4 rounded-full bg-neutral-600 border-2 border-neutral-900 z-10" />
+            <div 
+              className="absolute left-4 md:left-6 top-2 w-4 h-4 rounded-full border-2 z-10 shadow-sm"
+              style={{
+                backgroundColor: "var(--accent)",
+                borderColor: "var(--border-subtle)"
+              }}
+            />
 
             {/* Content card */}
-            <div className="bg-neutral-900/50 border border-neutral-800 rounded-xl p-6 hover:bg-neutral-900/70 transition-colors">
+            <div 
+              className="border rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300"
+              style={{
+                backgroundColor: "var(--bg-elevated)",
+                borderColor: "var(--border-subtle)"
+              }}
+            >
               <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-3">
                 <div>
-                  <h3 className="text-lg font-semibold text-neutral-100 mb-1">
+                  <h3 
+                    className="text-lg font-semibold mb-1"
+                    style={{ color: "var(--text-main)" }}
+                  >
                     {exp.role}
                   </h3>
-                  <p className="text-base text-neutral-300">{exp.organization}</p>
+                  <p style={{ color: "var(--text-muted)" }}>{exp.organization}</p>
                 </div>
-                <div className="text-sm text-neutral-400">
+                <div 
+                  className="text-sm"
+                  style={{ color: "var(--text-muted)" }}
+                >
                   {exp.startDate} {exp.endDate && `– ${exp.endDate}`}
                   {exp.endDate === "Present" && " – Present"}
                   {!exp.endDate && " – Present"}
@@ -63,7 +84,12 @@ export default function ExperienceTimeline({
               </div>
 
               {exp.location && (
-                <p className="text-xs text-neutral-500 mb-4">{exp.location}</p>
+                <p 
+                  className="text-xs mb-4"
+                  style={{ color: "var(--text-muted)" }}
+                >
+                  {exp.location}
+                </p>
               )}
 
               {exp.summary && exp.summary.length > 0 && (
@@ -71,7 +97,10 @@ export default function ExperienceTimeline({
                   {exp.summary.map((point, idx) => (
                     <li
                       key={idx}
-                      className="text-sm text-neutral-400 leading-relaxed before:content-['•'] before:mr-2 before:text-neutral-600"
+                      className="text-sm leading-relaxed before:content-['•'] before:mr-2"
+                      style={{ 
+                        color: "var(--text-muted)",
+                      }}
                     >
                       {point}
                     </li>
