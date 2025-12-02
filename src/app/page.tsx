@@ -8,7 +8,7 @@ import AboutStrip from "@/components/identity/AboutStrip";
 import ThreeGallerySection from "@/components/three/ThreeGallerySection";
 import Section from "@/components/layout/Section";
 import PhotoDiarySection from "@/components/photos/PhotoDiarySection";
-import EditorialGrid from "@/components/writing/EditorialGrid";
+import Carousel from "@/components/writing/Carousel";
 import ExperienceTimeline from "@/components/experience/ExperienceTimeline";
 
 export default function Home() {
@@ -27,13 +27,7 @@ export default function Home() {
       <PhotoDiarySection photos={photoLibrary.all()} />
 
       {/* Writing & Articles Section */}
-      <Section
-        id="writing"
-        title="Writing & Editing"
-        eyebrow="Culture, internet, brain stuff"
-      >
-        <EditorialGrid writings={writings} />
-      </Section>
+      <Carousel writings={writings} />
 
       {/* Experience / Timeline Section */}
       <Section id="experience" title="Experience" eyebrow="Work & Roles">
