@@ -100,7 +100,7 @@ export default function ThreeGallerySection({
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen w-full overflow-hidden"
+      className="relative min-h-[200vh] w-full overflow-hidden"
       style={{ backgroundColor: "var(--bg)" }}
     >
       {/* 3D Canvas with light gradient background */}

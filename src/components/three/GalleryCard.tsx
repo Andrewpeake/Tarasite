@@ -13,6 +13,8 @@ interface GalleryCardProps {
   isActive: boolean;
   onHoverStart: (artifact: Artifact) => void;
   onHoverEnd: () => void;
+  width?: number;
+  height?: number;
 }
 
 // Create a fallback texture (simple gradient) - only call on client
@@ -51,6 +53,8 @@ export default function GalleryCard({
   isActive,
   onHoverStart,
   onHoverEnd,
+  width = 2,
+  height = 2.5,
 }: GalleryCardProps) {
   const meshRef = useRef<THREE.Mesh>(null);
   const [hovered, setHovered] = useState(false);
@@ -141,7 +145,7 @@ export default function GalleryCard({
         onHoverEnd();
       }}
     >
-      <planeGeometry args={[2, 2.5]} />
+      <planeGeometry args={[width, height]} />
       <meshStandardMaterial
         map={finalTexture}
         emissive="#ffffff"

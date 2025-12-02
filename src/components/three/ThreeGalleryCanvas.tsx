@@ -101,7 +101,7 @@ export default function ThreeGalleryCanvas({
   return (
     <div ref={canvasContainerRef} className="w-full h-full cursor-grab active:cursor-grabbing">
       <Canvas
-        camera={{ position: [0, 0, 11], fov: 55 }}
+        camera={{ position: [0, 0, 9], fov: 60 }}
         gl={{ antialias: true, alpha: true }}
       >
         <GalleryScene
