@@ -2,9 +2,10 @@
 
 import { IdentityProfile } from "@/domain/identity";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "@/lib/scroll/gsapClient";
 import ParallaxBlock from "../animations/ParallaxBlock";
+import SocialLinks from "./SocialLinks";
 
 interface LinkedInHeroProps {
   profile: IdentityProfile;
@@ -20,6 +21,8 @@ export default function LinkedInHero({
   const nameRef = useRef<HTMLHeadingElement>(null);
   const taglineRef = useRef<HTMLParagraphElement>(null);
   const rolesRef = useRef<HTMLDivElement>(null);
+  const socialLinksRef = useRef<HTMLDivElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     // Fade/slide-in animations on load
@@ -55,6 +58,29 @@ export default function LinkedInHero({
       );
     }
   }, []);
+
+  // Animate social links on hover
+  useEffect(() => {
+    if (!socialLinksRef.current) return;
+
+    if (isHovered) {
+      gsap.to(socialLinksRef.current, {
+        opacity: 1,
+        y: 0,
+        duration: 0.3,
+        ease: "power2.out",
+        display: "block",
+      });
+    } else {
+      gsap.to(socialLinksRef.current, {
+        opacity: 0,
+        y: -10,
+        duration: 0.2,
+        ease: "power2.in",
+        display: "none",
+      });
+    }
+  }, [isHovered]);
 
   return (
     <section className="relative w-full" style={{ backgroundColor: "var(--bg)" }}>
@@ -98,14 +124,40 @@ export default function LinkedInHero({
           </div>
 
           {/* Name and Info */}
-          <div className="flex-1 pb-4">
-            <h1
-              ref={nameRef}
-              className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium mb-2"
-              style={{ color: "var(--text-main)" }}
+          <div className="flex-1 pb-4 relative">
+            <div
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+              className="relative inline-block cursor-pointer group"
             >
-              {profile.name}
-            </h1>
+              <h1
+                ref={nameRef}
+                className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium mb-2 transition-opacity duration-300"
+                style={{ color: "var(--text-main)" }}
+              >
+                {profile.name}
+              </h1>
+
+              {/* Social Links - appears on hover */}
+              <div
+                ref={socialLinksRef}
+                className="absolute top-full left-0 mt-4 z-20 pointer-events-auto"
+                style={{ display: "none", opacity: 0 }}
+              >
+                <div 
+                  className="bg-white/95 backdrop-blur-md rounded-2xl shadow-lg border p-4"
+                  style={{
+                    borderColor: "var(--border-subtle)",
+                    backgroundColor: "var(--bg-elevated)",
+                  }}
+                  onMouseEnter={() => setIsHovered(true)}
+                  onMouseLeave={() => setIsHovered(false)}
+                >
+                  <SocialLinks links={profile.links} />
+                </div>
+              </div>
+            </div>
+
             <p
               ref={taglineRef}
               className="text-base md:text-lg mb-4 font-light"
@@ -138,4 +190,3 @@ export default function LinkedInHero({
     </section>
   );
 }
-

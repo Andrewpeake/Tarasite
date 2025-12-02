@@ -5,6 +5,7 @@ import { experiences } from "@/data/experience";
 import { artifacts } from "@/data/artifacts";
 import LinkedInHero from "@/components/identity/LinkedInHero";
 import AboutStrip from "@/components/identity/AboutStrip";
+import SocialLinks from "@/components/identity/SocialLinks";
 import ThreeGallerySection from "@/components/three/ThreeGallerySection";
 import Section from "@/components/layout/Section";
 import PhotoDiarySection from "@/components/photos/PhotoDiarySection";

@@ -15,6 +15,7 @@ export const identityProfile: IdentityProfile = {
     substack: "https://substack.com/@tairruh",
     linkedin: "https://www.linkedin.com/in/tarayang/",
     spotify: "https://open.spotify.com/user/31rrav677cqkute2f777adv5g5c4?si=1711f7433488498d",
+    tiktok: "https://www.tiktok.com/@tairruhh?_r=1&_t=ZS-91tSyi6akuA",
   },
 };
 
